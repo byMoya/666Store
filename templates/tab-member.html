@@ -1,0 +1,66 @@
+<ion-view title="个人中心">
+    <ion-content>
+        <div class="member-header">
+            <img class="face" src="{{data.userImgUrl}}" alt=""/>
+            <p>账号：{{data.account}}</p>
+        </div>
+
+        <div class="row member-list">
+            <div class="col">
+                <a class="pill-flex" href="#/tab/ordersManage">订单</a>
+            </div>
+            <div style="border-left: 1px solid #CCC" class="col">
+                积分&emsp;<label class="active-text">{{data.integral}}</label>
+            </div>
+            <div style="border-left: 1px solid #CCC" class="col" ng-click="coupon.openCouponWin();">
+                优惠券
+            </div>
+        </div>
+        <div class="list member-option">
+
+            <a class="item item-icon-left" href="#/tab/address">
+                <i class="icon ion-ios-location"></i>
+               收货地址
+            </a>
+
+            <a class="item item-icon-left" href="#/tab/memberIframe/{{urls.data.problem}}/常见问题">
+                <i class="icon ion-ios-book"></i>
+                常见问题
+            </a>
+
+            <a class="item item-icon-left" href="javascript:;" ng-click="tels.openTelsPopup('storeOwner');">
+                <i class="icon ion-ios-chatboxes"></i>
+                联系店家
+            </a>
+
+            <a class="item item-icon-left" href="javascript:;" ng-click="tels.openTelsPopup('customerService');">
+                <i class="icon ion-ios-chatbubble"></i>
+                联系客服
+            </a>
+
+            <a class="item item-icon-left" href="#/tab/comment">
+                <i class="icon ion-ios-compose"></i>
+                意见反馈
+            </a>
+
+            <a class="item item-icon-left" href="#/tab/memberIframe/{{urls.data.about}}/关于我们">
+                <i class="icon ion-ios-people"></i>
+                关于我们
+            </a>
+
+            <a class="item item-icon-left" href="#/tab/memberIframe/{{urls.data.join}}/加入我们">
+                <i class="icon ion-ios-people"></i>
+                加入我们
+            </a>
+
+        </div>
+
+        <div class="row">
+            <button class="button button-full button-assertive" ng-click="showExitLoginfirm();">
+                退出
+            </button>
+        </div>
+
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+.good-detail .good-img {
+  text-align: center;
+  border: 1px solid #ccc;
+}
+.good-detail .good-img img {
+  padding: 10px;
+  width: 100%;
+  min-height: 168px;
+}
+.good-detail .red {
+  color: #ff4e35;
+  font-weight: bold;
+}
+.buyNum {
+  display: inline-block;
+  height: 32px;
+  width: 50px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  padding: 0 6px;
+  line-height: 32px;
+}

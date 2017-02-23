@@ -1,0 +1,73 @@
+<ion-view title="确认下单">
+    <ion-content>
+        <div class="list">
+            <a class="item item-icon-left" href="#/tab/addressOrder">
+                <i class="icon ion-ios-location-outline"></i>
+                <div style="border-left: 1px solid #ccc; padding-left: 20px">
+                    <p> <i style="display: inline-block; width: 26px" class="ion-ios-person-outline"></i> ：{{addressInfo.receiver}}</p>
+                    <p> <i style="display: inline-block; width: 26px" class="ion-ios-navigate-outline"></i> ：{{addressInfo.city + addressInfo.detailAddr}}</p>
+                    <p> <i style="display: inline-block; width: 26px" class="ion-ios-telephone-outline"></i> ：{{addressInfo.receivePhone}}</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="list">
+
+            <div class="item item-avatar" ng-repeat="item in orderList">
+                <img style="border-radius: 0" src="{{item.imageUrl}}">
+                <div class="row" style="text-align: center">
+                    <p style="color: red" class="col">{{item.appActPrice}}元*{{item.itemNums}}</p>
+                    <p class="col">{{item.itemName}}</p>
+                    <p style="color: red" class="col">￥{{item.appActPrice*item.itemNums}}</p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="list">
+
+            <form name="myForm" class="list">
+                <div class="item item-input item-select">
+                    <div class="input-label">
+                        支付方式
+                    </div>
+                    <select ng-model="data.payWay">
+                        <option value="2">货到付款</option>
+                        <option value="0">微信支付</option>
+                    </select>
+                </div>
+                <div class="item item-input item-select">
+                    <div class="input-label">
+                        使用优惠券
+                    </div>
+                    <select ng-model="coupon.data" ng-change="selectCoupon()">
+                        <option value="">请选择</option>
+                        <option ng-repeat="item in coupon.list" value="{{item}}">￥{{item.couponAmount}}优惠券(满￥{{item.useLimit}}可用)</option>
+                    </select>
+                </div>
+                <!-- <div class="item item-input">
+                    <div class="input-label">
+                        备注
+                    </div>
+                    <input style="text-align: right" type="text" placeholder="你的要求" ng-model="data.remarks"/>
+                </div> -->
+                <div class="item">
+                    <p class="input-label">备注</p>
+                    <textarea placeholder="如有特别需要，请备注留言" ng-model="data.remarks" style="min-height: 5em;background: #f9f9f9;padding: 0;width: 100%;"></textarea>
+                </div>
+            </form>
+
+
+        </div>
+        <div class="button-bar" style="margin-top: 10px;">
+            <div style="border-radius: 0; font-weight: bold" class="button button-dark" ng-disabled="true">
+                总价：{{totalPrices}}
+            </div>
+            <a style="border-radius: 0" class="button button-assertive" ng-click="goOrder()">
+                <i class="ion-android-checkmark-circle"></i> 提交订单
+            </a>
+        </div>
+
+    </ion-content>
+</ion-view>

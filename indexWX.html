@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title>首页</title>
+    <script src="lib/zepto/dist/zepto.min.js"></script>
+
+  </head>
+  <body>
+  </body>
+  <script type="text/javascript" charset="utf-8">
+    // var globalUrl = 'http://app.520coding.com:8080/';
+    var globalUrl = 'http://www.520coding.com/';
+    $(function(){
+      //console.log("fuck wjh");
+      setOpenid();
+    });
+    function setOpenid(){
+      var args = getQueryString("code");
+      var url = 'newProject/wx/store/open/getWeixinOpenId.do';
+      $.ajax({
+          url:globalUrl + url,
+          type:'POST',
+          dataType:'json',
+          data:{
+            code:args
+          },
+          success:function(rs){
+				var openId66=rs.openId;
+				sessionStorage.setItem("openId",openId66);
+				getToken(openId66);
+          }
+      });
+    }
+	
+	//用户openId判断是否绑定用户，绑定了则返回token信息
+	function getToken(args){
+		console.log("getToken方法:"+args);
+		$.ajax({
+          url:"http://www.520coding.com/newProject/wx/customer/open/getToken.do",
+          type:'POST',
+          async:true,
+          dataType:'json',
+          data:{
+            openId:args
+          },
+          success:function(data){
+			//$("body").append("<p>openId:"+args+"</p>");
+			//$("body").append("<p>sessionStorageOpenId:"+sessionStorage.getItem("openId")+"</p>");
+
+			//$("body").append("<p>"+JSON.stringify(data)+"</p>");
+				if(data.code==200){
+					//设置token
+					sessionStorage.setItem("shopToken",JSON.stringify(data.result.token));
+					sessionStorage.setItem("userInfo",JSON.stringify(data.result));
+					
+					//setTimeout(function(){
+						window.location.href = "index.html";
+					//},3000):
+					
+				}else{
+					window.location.href = "index.html";
+				}
+				
+          }
+      });
+	}
+    function getQueryString(name) {
+      var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) {
+      return unescape(r[2]);
+      }
+      return null;
+    }
+
+  </script>
+</html>

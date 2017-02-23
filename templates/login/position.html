@@ -1,0 +1,29 @@
+<ion-view>
+    <ion-content class="padding">
+
+        <form name="myForm" class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    城市
+                </div>
+                <select ng-model="shopMessage.city" ng-options="c as c.city for c in data">
+
+                </select>
+            </label>
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    门店
+                </div>
+                <select ng-model="shopMessage.shopInfo" ng-options="c as c.storeBriefName for c in shopMessage.city.storeList" ng-disabled="shopId">
+
+                </select>
+            </label>
+        </form>
+
+        <button class="button button-full button-positive" ng-disabled="myForm.$invalid" ng-click="save()">
+            确定
+        </button>
+
+    </ion-content>
+</ion-view>

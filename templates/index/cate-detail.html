@@ -1,0 +1,33 @@
+<ion-view>
+    <ion-nav-title>
+        分类
+    </ion-nav-title>
+    <ion-content>
+        <!-- <ion-refresher pulling-text="下拉刷新" on-refresh="ref.do()"></ion-refresher> -->
+        <div class="cate-detail">
+            <div class="nav">
+                <ul>
+                    <li class="on" ng-click="changeCate()">
+                        全部
+                    </li>
+                    <li ng-repeat="item in cateList" ng-click="changeCate(item)">
+                        {{item.categoryName}}
+                    </li>
+                </ul>
+            </div>
+            <div class="content">
+                <div class="list">
+                    <a ng-repeat="item in goodList" class="item  item-thumbnail-left content-box"
+                       href="#/tab/goodDetail/{{item.itemId}}">
+                        <img src="{{item.imageUrl}}">
+                        <h4>{{item.itemName}}</h4>
+                        <p>价格：{{item.appActPrice}} 元</p>
+                        <p>库存：{{item.available}}</p>
+                        <p>规格：{{item.itemSize}}</p>
+                    </a>
+                </div>
+                <ion-infinite-scroll ng-if="ref.canMore" on-infinite="ref.do();" distance="1%" >加载中</ion-infinite-scroll>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

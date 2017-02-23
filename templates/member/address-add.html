@@ -1,0 +1,55 @@
+<ion-view title="管理地址">
+    <ion-content>
+
+        <form name="myForm" class="list">
+            <label class="item item-input">
+                <div class="input-label">
+                    收货人
+                </div>
+                <input type="text" ng-model="data.receiver" required/>
+            </label>
+
+            <label class="item item-input">
+                <div class="input-label">
+                    手机
+                </div>
+                <input type="text" ng-model="data.receivePhone" required/>
+            </label>
+
+            <label class="item item-input">
+                <div class="input-label">
+                    城市
+                </div>
+                <input type="text"  ng-model="data.city" required/>
+            </label>
+
+            <label class="item item-input">
+                <div class="input-label">
+                    详细地址
+                </div>
+                <input type="text" ng-model="data.detailAddr" required/>
+            </label>
+
+            <ul class="list">
+
+                <li class="item item-toggle">
+                    是否设置为默认地址
+                    <label class="toggle toggle-balanced">
+                        <input type="checkbox" ng-model="data.isDefault" ng-checked="data.isDefault==1">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </li>
+            </ul>
+        </form>
+
+        <div class="row">
+            <button class="button button-full button-balanced" ng-disabled="myForm.$invalid"
+                    ng-click="save()">
+                保存
+            </button>
+        </div>
+
+    </ion-content>
+</ion-view>

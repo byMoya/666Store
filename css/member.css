@@ -1,0 +1,29 @@
+.member-header {
+  height: 150px;
+  width: 100%;
+  background: url("../img/headbg.png");
+  background-size: 100% 100%;
+  text-align: center;
+}
+.member-header .face {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background: #fff;
+  margin: 20px auto;
+}
+.member-header p {
+  color: #fff;
+  font-weight: bold;
+}
+.member-list {
+  margin: 10px 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  background: #eee;
+  line-height: 30px;
+}
+.member-option i {
+  color: #666;
+}

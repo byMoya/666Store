@@ -1,0 +1,37 @@
+@border:1px solid #ccc;
+.cate-detail{
+
+  display: block;
+
+  .nav{
+    float: left;
+    width: 80px;
+    ul{
+
+      li{
+        line-height: 44px;
+        font-size: 12px;
+        padding-left: 10px;
+        border-bottom: @border;
+        border-right: @border;
+        background: #eee;
+        color: #666;
+        &.on{
+          border-right: 0;
+          background: #fff;
+        }
+      }
+    }
+  }
+  .content{
+    margin-left: 80px;
+    .content-box{
+      h4{
+        color: #666;
+      }
+      p{
+        font-size: 12px;
+      }
+    }
+  }
+}

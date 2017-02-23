@@ -1,0 +1,50 @@
+<ion-view>
+
+  <ion-nav-title>
+    <a href="login.html#/position">当前店铺:{{shopInfo.storeBriefName}}</a>
+  </ion-nav-title>
+
+  <ion-content>
+
+    <ion-slide-box delegate-handle="my-banner" does-continue="true" auto-play="true" style="min-height: 120px"
+                    ng-if="banners" on-slide-changed="slideHasChanged($index)" class="slidebox" slide-interval="4000" does-continue="true">
+      <ion-slide ng-repeat="item in banners">
+        <div class="banner-box">
+          <a href="{{item.targetUrl}}">
+            <img src="{{item.imageUrl}}" alt=""/>
+          </a>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+    <ion-slide-box delegate-handle="my-cate" class="cate-box-out" style="height: 140px; background:#F9F9F9;"
+                   ng-if="cates" on-slide-changed="slideHasChanged($index)">
+      <ion-slide ng-repeat="item in cates">
+        <div class="cate-box">
+          <ul class="index-nav" dd_name="首页功能区">
+            <li ng-repeat="s in item" ng-click="toCateDetail(s)">
+              <!-- <a href="#/tab/cateDetail/{{s.categoryId}}"> -->
+                <img class="" src="{{s.imageUrl}}"><span>{{s.categoryName}}</span>
+              <!-- </a> -->
+            </li>
+          </ul>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+    <div class="list card">
+
+      <div class="item item-body" ng-repeat="item in activeList" ng-click="toActionDetail(item)">
+        <!-- <a href="#/tab/actionDetail/{{item.pageActId}}"> -->
+          <img height="100" class="full-image" src="{{item.imageUrl}}">
+        <!-- </a> -->
+        <p>
+          {{item.pageActName}}
+        </p>
+      </div>
+
+    </div>
+
+
+  </ion-content>
+</ion-view>

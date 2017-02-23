@@ -1,0 +1,84 @@
+<ion-view title="订单详情">
+    <ion-header-bar class="bar-stable bar bar-header">
+        <button class="button back-button buttons header-item" style="border:0;" ng-click="orderDetailWin.hide()">&lt;返回</button>
+        <h1 class="title">订单详情</h1>
+    </ion-header-bar>
+    <ion-header-bar class="bar-subheader">
+        <div class="row dzy-tab-status">
+            <div class="col" 
+                 ng-class="{'active':orderDetail.type==0}"
+                 ng-click="orderDetail.changeType(0)">
+                 订单状态
+            </div>
+            <div class="col" 
+                 ng-class="{'active':orderDetail.type==1}"
+                 ng-click="orderDetail.changeType(1)">
+                 订单详情
+            </div>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+
+        <!-- /* 下拉刷新订单状态 */ -->
+        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+        <!-- 订单状态 -->
+        <div ng-show="orderDetail.type==0">
+            <div class="card">
+                <ul class="list">
+                    <li class="item" ng-repeat="status in orderDetail.statusData">
+                        <p class="pill-flex" style="margin-top: 0.5em;">
+                            <label class="w7">
+                                {{status.ordStatus}}  
+                            </label>
+                            <label class="w3 dzy-text-right">{{status.createTime}}</label>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 订单状态 End -->
+
+        <!-- 订单详情 -->
+        <div ng-show="orderDetail.type==1">
+            <div class="list list-inset">
+                <div class="item">
+                    <p>{{orderDetail.data.city}}&emsp;{{orderDetail.data.detailAddr}}</p>
+                </div>
+                <div class="item">
+                    <ul class="list">
+                        <li ng-repeat="good in orderDetail.data.details">
+                            <p class="pill-flex" style="margin-top: 0.5em;">
+                                <label class="w7">
+                                    {{good.itemName}}
+                                    <label class="dzy-text-right">{{good.nums}}</label>   
+                                </label>
+                                <label class="w3 dzy-text-right">￥{{good.salePrice}}</label>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <p>
+                        总计￥{{orderDetail.data.orderAmount}}&emsp;&emsp;
+                        优惠￥{{orderDetail.data.orderAmount-orderDetail.data.orderActAmount}}
+                        <label class="dzy-text-right">实收￥&emsp;{{orderDetail.data.orderActAmount}}</label>
+                    </p>
+                </div>
+                <div class="item">
+                    <p>付款时间&emsp;&emsp;{{orderDetail.data.payTime}}</p>
+                    <p>付款状态&emsp;&emsp;{{orderDetail.data.payStatus}}</p>
+                </div>
+                <div class="item">
+                    <p>收货人&emsp;&emsp;&emsp;{{orderDetail.data.receiver}}</p>
+                    <p>预留电话&emsp;&emsp;{{orderDetail.data.receivePhone}}</p>
+                    <p>收货地址&emsp;&emsp;{{orderDetail.data.detailAddr}}</p>
+                </div>
+                <div class="item">
+                    <p>备注&emsp;&emsp;&emsp;&emsp;{{orderDetail.data.remarks}}</p>
+                </div>
+            </div>
+        </div>
+        <!-- 订单详情 End -->
+
+    </ion-content>
+</ion-view>

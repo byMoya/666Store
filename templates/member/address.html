@@ -1,0 +1,39 @@
+<ion-view title="管理收货地址">
+    <ion-content>
+
+        <div class="list list-inset">
+
+            <div class="item" ng-repeat="item in list">
+                <div ng-show="item.isDefault == 1" style="position: absolute; color: red; right:0; top:0;font-size: 12px">
+                    <i class="ion-checkmark" ></i> 默认
+                </div>
+
+                <div class="row">
+                    <h3 class="col">{{item.receiver}}</h3>
+                    <span class="col">电话：{{item.receivePhone}}</span>
+                </div>
+
+                <div class="row">
+                    <p class="col">地址：{{item.city}} {{item.detailAddr}}</p>
+                </div>
+
+                <div class="row">
+                    <div class="button-bar">
+                        <a class="button button-small" ng-click="del(item,$index)">删除</a>
+                        <a class="button button-small" ng-click="edit(item)">编辑</a>
+                        <a class="button button-small" ng-click="setDefault(item)">默认地址</a>
+                    </div>    
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="padding">
+            <a class="button button-full button-assertive" href="#/tab/addressAdd">
+                添加新地址
+            </a>
+        </div>
+
+    </ion-content>
+</ion-view>

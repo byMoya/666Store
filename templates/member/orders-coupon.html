@@ -1,0 +1,30 @@
+<ion-view title="优惠券">
+    <ion-header-bar class="bar-stable bar bar-header">
+        <button class="button back-button buttons header-item" style="border:0;" ng-click="coupon.win.hide()">&lt;返回</button>
+        <h1 class="title">优惠券</h1>
+    </ion-header-bar>
+    <!-- <ion-header-bar class="bar-subheader">
+        <div class="row dzy-tab-status">
+            <div class="col" 
+                 ng-class="{'active':orderDetail.type==0}"
+                 ng-click="orderDetail.changeType(0)">
+                 订单状态
+            </div>
+            <div class="col" 
+                 ng-class="{'active':orderDetail.type==1}"
+                 ng-click="orderDetail.changeType(1)">
+                 订单详情
+            </div>
+        </div>
+    </ion-header-bar> -->
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="item in coupon.data" class="item-thumbnail-left card">
+                <img ng-src="{{item.imageUrl}}">
+                <p style="margin-top: 1em;">￥{{item.couponAmount}}优惠券：￥{{item.couponAmount}}（{{item.isUse?'未使用':'已使用'}}）</p>
+                <p>满￥{{item.useLimit}}可使用</p>
+                <p>过期时间：{{item.outOfDate | date:'yyyy-MM-dd'}}</p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

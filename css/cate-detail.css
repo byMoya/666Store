@@ -1,0 +1,29 @@
+.cate-detail {
+  display: block;
+}
+.cate-detail .nav {
+  float: left;
+  width: 80px;
+}
+.cate-detail .nav ul li {
+  line-height: 44px;
+  font-size: 12px;
+  padding-left: 10px;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  background: #eee;
+  color: #666;
+}
+.cate-detail .nav ul li.on {
+  border-right: 0;
+  background: #fff;
+}
+.cate-detail .content {
+  margin-left: 80px;
+}
+.cate-detail .content .content-box h4 {
+  color: #666;
+}
+.cate-detail .content .content-box p {
+  font-size: 12px;
+}

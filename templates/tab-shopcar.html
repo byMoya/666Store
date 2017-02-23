@@ -1,0 +1,54 @@
+<ion-view>
+    <ion-nav-title>
+        购物车
+    </ion-nav-title>
+    <ion-content>
+        <ion-toggle ng-model="shouldShowDelete">
+            显示删除?
+        </ion-toggle>
+
+        <ion-list show-delete="shouldShowDelete">
+            <ion-item ng-repeat="item in carList"
+                      class="item-thumbnail-left">
+
+
+                <img ng-src="{{item.imageUrl}}">
+                <h2>{{item.itemName}}</h2>
+                <p class="row">
+                    单价：{{item.appActPrice}}元
+                </p>
+                <p class="row">
+                    <span>数量：</span>
+                    <button class="button button-calm button-small"
+                         ng-click="min(item)">
+                        <i class="ion-minus-round"></i>
+                    </button>
+                    <input class="buyNum" type="text" ng-model="item.itemNums">
+                    <button class="button button-calm button-small"
+                            ng-click="add(item)">
+                        <i class="ion-plus-round"></i>
+                    </button>
+                </p>
+                <div>
+                    <label ng-init="item[item.cartId]=true">
+                        <input ng-model="item[item.cartId]" ng-change="getTotalPrices()" type="checkbox"/> 选择结账
+                    </label>
+                </div>
+
+
+                <ion-delete-button class="ion-minus-circled" ng-click="deleteItem(item,$index)">
+                </ion-delete-button>
+            </ion-item>
+        </ion-list>
+
+        <div class="button-bar" style="margin-top: 10px;">
+            <div style="border-radius: 0; font-weight: bold" class="button button-dark" ng-disabled="true">
+               总价：{{totalPrices}}
+            </div>
+            <a style="border-radius: 0" class="button button-assertive" ng-click="goOrder()">
+                <i class="ion-android-checkmark-circle"></i> 立即购买
+            </a>
+        </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,35 @@
+<ion-view title="意见反馈">  
+    <ion-content>
+        <style type="text/css" media="screen">
+            #Comment{
+                margin-top: 2em;
+            }
+            #Comment .item{
+                border:0;
+            }
+            #Comment .button{
+                width: 95%;
+                border-radius: 30px;
+            }
+        </style>
+        <div id="Comment" class="list">
+            <div class="item">
+                <div class="row" ng-repeat="row in commentSingle.typeDate">
+                    <div class="col" ng-repeat="btn in row">
+                        <button class="button button-small" 
+                                ng-class="{'button-assertive':btn.value==commentSingle.backType.value}"
+                                ng-click="commentSingle.typeSelect(btn);">{{btn.text}}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <textarea placeholder="请留下你的宝贵意见" ng-model="commentSingle.content"
+                          style="min-height: 12em;background: #f9f9f9;padding: 0;width: 100%;"></textarea>
+                <p style="margin-top: 2em;">
+                    <button class="button button-assertive" ng-click="submitComment();">提交</button>
+                </p>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>
